@@ -1,0 +1,21 @@
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\bin\Debug\BanCheckWindows.exe.config
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows.csprojResolveAssemblyReference.cache
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\MainWindow.g.cs
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\SetSteamAPIKeyWindow.g.cs
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\App.g.cs
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows_MarkupCompile.cache
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows_MarkupCompile.lref
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\bin\Debug\BanCheckWindows.exe
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\bin\Debug\BanCheckWindows.pdb
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\MainWindow.baml
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\SetSteamAPIKeyWindow.baml
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows.g.resources
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows.Properties.Resources.resources
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows.csproj.GenerateResource.Cache
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows.exe
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows.pdb
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\bin\Debug\Newtonsoft.Json.dll
+c:\users\twq\documents\visual studio 2015\Projects\BanCheckWindows\BanCheckWindows\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\BanCheckWindows\BanCheckWindows\bin\Debug\BanCheckWindows.exe.config
+D:\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows.exe
+D:\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\BanCheckWindows.pdb
