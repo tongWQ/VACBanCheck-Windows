@@ -15,8 +15,8 @@ namespace BanCheckWindows
         private string PlayerPersonalURL;
         //private bool IsCustomURL;
         private Player toCheck;
-        Player hasChecked;
-        string steamAPIURL = "https://api.steampowered.com/ISteamUser/GetPlayerBans/v1/";
+        private Player hasChecked;
+      //  string steamAPIURL = "https://api.steampowered.com/ISteamUser/GetPlayerBans/v1/";
         public BanCheck()
         {
 
@@ -59,7 +59,7 @@ namespace BanCheckWindows
 
         public Player GetSingleResult(Player check,string json)
         {
-            List<string> resultList = new List<string>();
+           // List<string> resultList = new List<string>();
 
             JObject jObj = JObject.Parse(json);
             check.SteamId = (string)jObj["players"][0]["SteamId"];
@@ -81,7 +81,7 @@ namespace BanCheckWindows
             uiString += "社区封禁: " + hasChecked.CommunityBanned.ToString() + "\r\n";
             uiString += "VAC封禁: " + hasChecked.VACBanned.ToString() + "\r\n";
             uiString += "VAC封禁数: " + hasChecked.NumberOfVACBanns.ToString() + "\r\n";
-            uiString += "上次封禁至今: " + hasChecked.DaysSinceLastBan.ToString() + " 天days\r\n";
+            uiString += "上次封禁至今: " + hasChecked.DaysSinceLastBan.ToString() + " 天\r\n";
             uiString += "游戏封禁: " + hasChecked.NumberOfGameBans.ToString() + "\r\n";
             uiString += "交易封禁: " + hasChecked.EconomyBan;
 

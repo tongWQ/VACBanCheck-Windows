@@ -16,7 +16,7 @@
         <Button x:Name="buttonCheck" Content="查询" HorizontalAlignment="Right" Height="33.004" Margin="0,0,86.331,10" VerticalAlignment="Bottom" Width="104.194" Grid.Row="2" Click="buttonCheck_Click"/>
         <GroupBox x:Name="groupBoxResult" Header="查询结果" HorizontalAlignment="Stretch"  Margin="10,10,10,10" Grid.Row="1" VerticalAlignment="Stretch">
             <Grid>
-                <TextBlock x:Name="textBlockResult" TextAlignment="Left"></TextBlock>
+                <TextBox IsReadOnly="True" x:Name="textBlockResult" TextAlignment="Left" BorderBrush="White"></TextBox>
             </Grid>
         </GroupBox>
         <TextBlock x:Name="textBlockLinkInput" HorizontalAlignment="Left" Height="27.479" Margin="10,10,0,0" TextWrapping="Wrap" Text="输入Steam个人主页地址" VerticalAlignment="Top" Width="147.984"/>
