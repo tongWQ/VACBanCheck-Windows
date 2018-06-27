@@ -23,6 +23,9 @@ namespace BanCheckWindows
     /// </summary>
     public partial class MainWindow : Window
     {
+        Player[] Players;
+        BanCheck check;
+        int playerIndex = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -47,8 +50,51 @@ namespace BanCheckWindows
             //  MessageBox.Show(id);
             // BanCheck check = new BanCheck(url);
             // textBlockResult.Text = check.GetHttpResponse(url + "?key=" + App.SteamAPIKey + "&steamids=76561198118220136,");
-            BanCheck check = new BanCheck(url);
-            textBlockResult.Text = check.SetResultUI();
+           
+
+            if (url.EndsWith(","))
+              url = url.TrimEnd(',');
+
+            check = new BanCheck(url);
+            //   Players = check.Players;
+            textBoxResult.Text = check.SetResultUI(0);
+            buttonPrevious.IsEnabled = true;
+            buttonNext.IsEnabled = true;
+            //  textBoxResult.Text = check.SetResultUI();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            buttonPrevious.Content = "<";
+            buttonNext.Content = ">";
+            buttonPrevious.IsEnabled = false;
+            buttonNext.IsEnabled = false;
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            //BanCheck chk = new BanCheck();
+            //textBoxResult.Text = chk.SpiltURLtoAPIParam(textBoxLinkInput.Text);
+        }
+
+        private void buttonPrevious_Click(object sender, RoutedEventArgs e)
+        {
+            playerIndex--;
+            string result= check.SetResultUI(playerIndex);
+            if (result != "")
+                textBoxResult.Text = result;
+            else
+                MessageBox.Show("已经是第一项");
+        }
+
+        private void buttonNext_Click(object sender, RoutedEventArgs e)
+        {
+            playerIndex++;
+            string result = check.SetResultUI(playerIndex);
+            if (result != "")
+                textBoxResult.Text = result;
+            else
+                MessageBox.Show("已经是最后一项");
         }
     }
 }
