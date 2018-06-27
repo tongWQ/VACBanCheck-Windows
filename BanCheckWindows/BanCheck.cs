@@ -24,6 +24,10 @@ namespace BanCheckWindows
 
         }
 
+        /// <summary>
+        /// 调用该构造函数后就生成了已查询过的Players（Player[]）
+        /// </summary>
+        /// <param name="url">以英文逗号,分隔的多个个人主页链接字符串</param>
         public BanCheck(string url)
         {
             PlayerPersonalURL = url;
@@ -36,6 +40,11 @@ namespace BanCheckWindows
             
         }
 
+        /// <summary>
+        /// 从个人主页链接中提取ID并生成API所需参数
+        /// </summary>
+        /// <param name="total">以英文逗号,分隔的多个个人主页链接字符串</param>
+        /// <returns>格式化的API参数steamids</returns>
         public string SpiltURLtoAPIParam(string total)
         {
             if (string.IsNullOrEmpty(total))
@@ -52,6 +61,11 @@ namespace BanCheckWindows
             return apiParam;
         }
 
+        /// <summary>
+        /// 从单个URL中提取Steam ID，暂不支持个性化主页链接
+        /// </summary>
+        /// <param name="url">单个URL</param>
+        /// <returns>提取到的steamid</returns>
         public string GetIDFromPersonalURL(string url)
         {
             string idResult = "";
@@ -95,6 +109,12 @@ namespace BanCheckWindows
             return check;
         }
 
+        /// <summary>
+        /// 将json文件内容转化为Player对象
+        /// </summary>
+        /// <param name="count">链接数</param>
+        /// <param name="json">收到的json文件</param>
+        /// <returns></returns>
         public Player[] GetMultiResults(int count, string json)
         {
             if (string.IsNullOrEmpty(json)||count<1)
@@ -121,6 +141,11 @@ namespace BanCheckWindows
             return results;
         }
 
+        /// <summary>
+        /// Abandoned
+        /// </summary>
+        /// <param name="toSet"></param>
+        /// <returns></returns>
         public string SetResultUI(Player toSet)
         {
             string uiString = "";
@@ -136,6 +161,11 @@ namespace BanCheckWindows
             return uiString;
         }
 
+        /// <summary>
+        /// 在UI显示结果，通过index切换显示的结果
+        /// </summary>
+        /// <param name="toSetIndex">players数组索引</param>
+        /// <returns>供UI显示的已格式化的字符串</returns>
         public string SetResultUI(int toSetIndex)
         {
             if (toSetIndex > Players.Length - 1 || toSetIndex < 0)
@@ -153,6 +183,12 @@ namespace BanCheckWindows
 
             return uiString;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="url">Steam API的url，不是个人主页url</param>
+        /// <returns></returns>
         public string GetHttpResponse(string url)
         {
             if (url == "")
@@ -186,6 +222,10 @@ namespace BanCheckWindows
         public int NumberOfGameBans { get; set; }
         public string EconomyBan { get; set; }
         
+        /// <summary>
+        /// Abandoned
+        /// </summary>
+        /// <param name="id"></param>
         public Player(string id)
         {
             SteamId = id;
