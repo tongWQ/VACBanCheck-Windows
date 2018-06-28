@@ -101,7 +101,7 @@ namespace BanCheckWindows
             check.SteamId = (string)jObj["players"][0]["SteamId"];
             check.CommunityBanned = Convert.ToBoolean((string)jObj["players"][0]["CommunityBanned"]);
             check.VACBanned = Convert.ToBoolean((string)jObj["players"][0]["VACBanned"]);
-            check.NumberOfVACBanns = Convert.ToInt32((string)jObj["players"][0]["NumberOfVACBans"]);
+            check.NumberOfVACBans = Convert.ToInt32((string)jObj["players"][0]["NumberOfVACBans"]);
             check.NumberOfGameBans = Convert.ToInt32((string)jObj["players"][0]["NumberOfGameBans"]);
             check.EconomyBan = (string)jObj["players"][0]["EconomyBan"];
             check.DaysSinceLastBan =Convert.ToInt32((string)jObj["players"][0]["DaysSinceLastBan"]);
@@ -131,7 +131,7 @@ namespace BanCheckWindows
                 results[i].SteamId = (string)jObj["players"][i]["SteamId"];
                 results[i].CommunityBanned = Convert.ToBoolean((string)jObj["players"][i]["CommunityBanned"]);
                 results[i].VACBanned = Convert.ToBoolean((string)jObj["players"][i]["VACBanned"]);
-                results[i].NumberOfVACBanns = Convert.ToInt32((string)jObj["players"][i]["NumberOfVACBans"]);
+                results[i].NumberOfVACBans = Convert.ToInt32((string)jObj["players"][i]["NumberOfVACBans"]);
                 results[i].NumberOfGameBans = Convert.ToInt32((string)jObj["players"][i]["NumberOfGameBans"]);
                 results[i].EconomyBan = (string)jObj["players"][i]["EconomyBan"];
                 results[i].DaysSinceLastBan = Convert.ToInt32((string)jObj["players"][i]["DaysSinceLastBan"]);
@@ -153,7 +153,7 @@ namespace BanCheckWindows
             uiString += "SteamId: " + toSet.SteamId + "\r\n";
             uiString += "社区封禁: " + toSet.CommunityBanned.ToString() + "\r\n";
             uiString += "VAC封禁: " + toSet.VACBanned.ToString() + "\r\n";
-            uiString += "VAC封禁数: " + toSet.NumberOfVACBanns.ToString() + "\r\n";
+            uiString += "VAC封禁数: " + toSet.NumberOfVACBans.ToString() + "\r\n";
             uiString += "上次封禁至今: " + toSet.DaysSinceLastBan.ToString() + " 天\r\n";
             uiString += "游戏封禁: " + toSet.NumberOfGameBans.ToString() + "\r\n";
             uiString += "交易封禁: " + toSet.EconomyBan;
@@ -176,7 +176,7 @@ namespace BanCheckWindows
             uiString += "SteamId: " + Players[toSetIndex].SteamId + "\r\n";
             uiString += "社区封禁: " + Players[toSetIndex].CommunityBanned.ToString() + "\r\n";
             uiString += "VAC封禁: " + Players[toSetIndex].VACBanned.ToString() + "\r\n";
-            uiString += "VAC封禁数: " + Players[toSetIndex].NumberOfVACBanns.ToString() + "\r\n";
+            uiString += "VAC封禁数: " + Players[toSetIndex].NumberOfVACBans.ToString() + "\r\n";
             uiString += "上次封禁至今: " + Players[toSetIndex].DaysSinceLastBan.ToString() + " 天\r\n";
             uiString += "游戏封禁: " + Players[toSetIndex].NumberOfGameBans.ToString() + "\r\n";
             uiString += "交易封禁: " + Players[toSetIndex].EconomyBan;
@@ -217,7 +217,7 @@ namespace BanCheckWindows
         public string SteamId { get; set; }
         public bool VACBanned { get; set; }
         public bool CommunityBanned { get; set; }
-        public int NumberOfVACBanns { get; set; }
+        public int NumberOfVACBans { get; set; }
         public int DaysSinceLastBan { get; set; }
         public int NumberOfGameBans { get; set; }
         public string EconomyBan { get; set; }
@@ -232,9 +232,9 @@ namespace BanCheckWindows
             VACBanned = false;
             CommunityBanned = false;
             NumberOfGameBans = 0;
-            NumberOfVACBanns = 0;
+            NumberOfVACBans = 0;
             DaysSinceLastBan = 0;
-            NumberOfVACBanns = 0;
+            NumberOfVACBans = 0;
             EconomyBan = "none";
         }
         public Player()
@@ -243,9 +243,9 @@ namespace BanCheckWindows
             VACBanned = false;
             CommunityBanned = false;
             NumberOfGameBans = 0;
-            NumberOfVACBanns = 0;
+            NumberOfVACBans = 0;
             DaysSinceLastBan = 0;
-            NumberOfVACBanns = 0;
+            NumberOfVACBans = 0;
             EconomyBan = "none";
         }
     }
