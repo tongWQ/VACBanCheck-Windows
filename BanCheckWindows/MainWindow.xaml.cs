@@ -60,6 +60,8 @@ namespace BanCheckWindows
             textBoxResult.Text = check.SetResultUI(0);
             buttonPrevious.IsEnabled = true;
             buttonNext.IsEnabled = true;
+            textBlockCurrent.Text = (playerIndex + 1).ToString();
+            textBlockTotal.Text = check.Players.Length.ToString();
             //  textBoxResult.Text = check.SetResultUI();
         }
 
@@ -82,7 +84,10 @@ namespace BanCheckWindows
             playerIndex--;
             string result= check.SetResultUI(playerIndex);
             if (result != "")
+            {
                 textBoxResult.Text = result;
+                textBlockCurrent.Text = (playerIndex + 1).ToString();
+            }
             else
                 MessageBox.Show("已经是第一项");
         }
@@ -92,7 +97,10 @@ namespace BanCheckWindows
             playerIndex++;
             string result = check.SetResultUI(playerIndex);
             if (result != "")
+            {
                 textBoxResult.Text = result;
+                textBlockCurrent.Text = (playerIndex + 1).ToString();
+            }
             else
                 MessageBox.Show("已经是最后一项");
         }

@@ -33,59 +33,27 @@ namespace BanCheckWindows
             PlayerPersonalURL = url;
            // string playerID = GetIDFromPersonalURL(PlayerPersonalURL);
             string apiRequestURL="";
-           // toCheck = new Player(playerID);
-            apiRequestURL = App.GetPlayerBansAPIURL + "?key=" + App.SteamAPIKey + "&steamids="+SpiltURLtoAPIParam(url);
-            string jsonFile = GetHttpResponse(apiRequestURL);
+            // toCheck = new Player(playerID);
+            string steamids = APIConnection.SpiltURLtoAPIParam(url);
+            apiRequestURL = App.GetPlayerBansAPIURL + "?key=" + App.SteamAPIKey + "&steamids="+steamids;
+
+            playerCount = GetPlayerCountFromInputURL(url);
+
+            // string jsonFile = GetHttpResponse(apiRequestURL);
+            string jsonFile = APIConnection.GetHttpResponse(apiRequestURL);
+
+
             Players = GetMultiResults(playerCount,jsonFile);
-            
+            Player.GetPersonSummaries(Players, steamids);
         }
 
-        /// <summary>
-        /// 从个人主页链接中提取ID并生成API所需参数
-        /// </summary>
-        /// <param name="total">以英文逗号,分隔的多个个人主页链接字符串</param>
-        /// <returns>格式化的API参数steamids</returns>
-        public string SpiltURLtoAPIParam(string total)
+        public int GetPlayerCountFromInputURL(string urlFromUI)
         {
-            if (string.IsNullOrEmpty(total))
-                return null;
-            string apiParam = "";
-            string[] spilted = total.Split(',');
-
-            playerCount = spilted.Length;
-
-            for (int i = 0; i < spilted.Length; i++)
-            {
-                apiParam += GetIDFromPersonalURL(spilted[i]) + ",";
-            }
-            return apiParam;
+            string[] spilted = urlFromUI.Split(',');
+            return spilted.Length;
         }
 
-        /// <summary>
-        /// 从单个URL中提取Steam ID，暂不支持个性化主页链接
-        /// </summary>
-        /// <param name="url">单个URL</param>
-        /// <returns>提取到的steamid</returns>
-        public string GetIDFromPersonalURL(string url)
-        {
-            string idResult = "";
 
-            if (url.Contains("id"))
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.Load(url + "?xml=1");
-                string xpathID64 = "//profile/steamID64";
-                XmlNode nodeID64 = doc.SelectSingleNode(xpathID64);
-                idResult = nodeID64.InnerText;
-            }
-            else if (url.Contains("profiles"))
-            {
-                string[] spilted = url.Split('/');
-                idResult = spilted[spilted.Length - 1];
-            }
-            
-            return idResult;
-        }
 
         /// <summary>
         /// Abandoned
@@ -149,7 +117,6 @@ namespace BanCheckWindows
         public string SetResultUI(Player toSet)
         {
             string uiString = "";
-
             uiString += "SteamId: " + toSet.SteamId + "\r\n";
             uiString += "社区封禁: " + toSet.CommunityBanned.ToString() + "\r\n";
             uiString += "VAC封禁: " + toSet.VACBanned.ToString() + "\r\n";
@@ -173,6 +140,7 @@ namespace BanCheckWindows
 
             string uiString = "";
 
+            uiString += "steam玩家名: " + Players[toSetIndex].PersonName + "\r\n";
             uiString += "SteamId: " + Players[toSetIndex].SteamId + "\r\n";
             uiString += "社区封禁: " + Players[toSetIndex].CommunityBanned.ToString() + "\r\n";
             uiString += "VAC封禁: " + Players[toSetIndex].VACBanned.ToString() + "\r\n";
@@ -209,9 +177,76 @@ namespace BanCheckWindows
 
             return retString;
         }
-
-       
+        
     }
+
+    public static class APIConnection
+    {
+        public static string GetHttpResponse(string url)
+        {
+            if (url == "")
+                return "empty url";
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            request.ContentType = "text/html;charset=UTF-8";
+            request.UserAgent = null;
+            request.Timeout = 5000;
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream myResponseStream = response.GetResponseStream();
+            StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
+            string retString = myStreamReader.ReadToEnd();
+            myStreamReader.Close();
+            myResponseStream.Close();
+
+            return retString;
+        }
+
+        public static string SpiltURLtoAPIParam(string total)
+        {
+            if (string.IsNullOrEmpty(total))
+                return null;
+            string apiParam = "";
+            string[] spilted = total.Split(',');
+
+         //   playerCount = spilted.Length;
+
+            for (int i = 0; i < spilted.Length; i++)
+            {
+                apiParam += GetIDFromPersonalURL(spilted[i]) + ",";
+            }
+            return apiParam;
+        }
+
+        /// <summary>
+        /// 从单个URL中提取Steam ID，暂不支持个性化主页链接
+        /// </summary>
+        /// <param name="url">单个URL</param>
+        /// <returns>提取到的steamid</returns>
+        public static string GetIDFromPersonalURL(string url)
+        {
+            string idResult = "";
+
+            if (url.Contains("id"))
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(url + "?xml=1");
+                string xpathID64 = "//profile/steamID64";
+                XmlNode nodeID64 = doc.SelectSingleNode(xpathID64);
+                idResult = nodeID64.InnerText;
+            }
+            else if (url.Contains("profiles"))
+            {
+                string[] spilted = url.Split('/');
+                idResult = spilted[spilted.Length - 1];
+            }
+
+            return idResult;
+        }
+
+    }
+
     public class Player
     {
         public string SteamId { get; set; }
@@ -221,7 +256,8 @@ namespace BanCheckWindows
         public int DaysSinceLastBan { get; set; }
         public int NumberOfGameBans { get; set; }
         public string EconomyBan { get; set; }
-        
+        public string PersonName { get; set; }
+
         /// <summary>
         /// Abandoned
         /// </summary>
@@ -236,6 +272,7 @@ namespace BanCheckWindows
             DaysSinceLastBan = 0;
             NumberOfVACBans = 0;
             EconomyBan = "none";
+            PersonName = "";
         }
         public Player()
         {
@@ -247,6 +284,32 @@ namespace BanCheckWindows
             DaysSinceLastBan = 0;
             NumberOfVACBans = 0;
             EconomyBan = "none";
+            PersonName = "";
+        }
+
+        public static void GetPersonSummaries(Player[] nameNeeded,string param)
+        {
+            if (nameNeeded == null||nameNeeded.Length<1)
+                return;
+           // string ids = "";
+
+            string queryURL = App.GetPlayerSummariesURL + "?key=" + App.SteamAPIKey + "&steamids=" + param;
+            string json = APIConnection.GetHttpResponse(queryURL);
+
+            JObject jObj = JObject.Parse(json);
+            
+            for (int i = 0; i < nameNeeded.Length; i++)
+            {
+              //  nameNeeded[i].PersonName = (string)jObj["response"]["players"][i]["personaname"];
+                foreach (JToken token in jObj["response"]["players"].Children())
+                {
+                    string idInJson = token.Value<string>("steamid");
+                    if (nameNeeded[i].SteamId == idInJson)
+                        nameNeeded[i].PersonName = token.Value<string>("personaname");
+                }
+            }
+
+
         }
     }
 }

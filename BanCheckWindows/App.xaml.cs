@@ -18,5 +18,6 @@ namespace BanCheckWindows
     {
         public static string SteamAPIKey = "DCCF6B72328C01D1EE708DA272F01327";
         public const string GetPlayerBansAPIURL = "https://api.steampowered.com/ISteamUser/GetPlayerBans/v1/";
+        public const string GetPlayerSummariesURL = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/";
     }
 }

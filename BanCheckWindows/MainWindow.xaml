@@ -24,6 +24,9 @@
         <Button x:Name="buttonPrevious" Content="" HorizontalAlignment="Left" Height="33" Margin="10,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="33" Click="buttonPrevious_Click"/>
         <Button x:Name="buttonNext" Content="" HorizontalAlignment="Left" Height="33" Margin="48,0,0,10" Grid.Row="2" VerticalAlignment="Bottom" Width="33" Click="buttonNext_Click"/>
         <Button Visibility="Hidden" x:Name="button" Content="Button" HorizontalAlignment="Left" Height="33" Margin="226.667,10.665,0,0" Grid.Row="2" VerticalAlignment="Top" Width="41.333" Click="button_Click"/>
+        <TextBlock TextAlignment="Right" x:Name="textBlockCurrent" HorizontalAlignment="Left" Height="26.628" Margin="96,17.037,0,0" Grid.Row="2" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="62"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="26.628" Margin="163,17.037,0,0" Grid.Row="2" TextWrapping="Wrap" Text="/" VerticalAlignment="Top" Width="8.667"/>
+        <TextBlock TextAlignment="Left" x:Name="textBlockTotal" HorizontalAlignment="Left" Height="24.372" Margin="171.667,17.037,0,0" Grid.Row="2" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="63"/>
 
     </Grid>
 </Window>
