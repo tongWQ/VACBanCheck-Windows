@@ -11,3 +11,4 @@ NewtonSoft JSON.NET（用于解析收到的json文件）
 ## 直接运行
 运行VACBanCheck/BanCheckWindows/bin/Debug 或Release 目录下的BanCheckWindows.exe<br>
 注意：Newtonsoft.Json.dll必须与exe在同一目录
+下载压缩包：https://visusaltwq.oss-cn-beijing.aliyuncs.com/Bancheck/Windows/BanCheck-Windows.zip
