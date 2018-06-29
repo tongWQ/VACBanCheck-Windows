@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Projects\BanCheckWindows\BanCheckWindows\obj\Debug\
+D:\VSProjects\VACBanCheck\BanCheckWindows\obj\Debug\
 BanCheckWindows
 none
 false
 DEBUG;TRACE
-D:\Projects\BanCheckWindows\BanCheckWindows\App.xaml
+D:\VSProjects\VACBanCheck\BanCheckWindows\App.xaml
 2863402147
 
 7-739542914
-11-213318706
+11450698048
 MainWindow.xaml;SetSteamAPIKeyWindow.xaml;
 
 False
