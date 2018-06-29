@@ -38,6 +38,12 @@ namespace BanCheckWindows
 
         private void buttonCheck_Click(object sender, RoutedEventArgs e)
         {
+            if (textBoxLinkInput.Text == string.Empty)
+            {
+                MessageBox.Show("URL不能为空");
+                return;
+            }
+
             string url = textBoxLinkInput.Text.Trim();
             //  //string[] splited = url.Split('/');
             //  //MessageBox.Show(splited[splited.Length - 1]);

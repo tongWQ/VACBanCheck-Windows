@@ -305,7 +305,11 @@ namespace BanCheckWindows
                 {
                     string idInJson = token.Value<string>("steamid");
                     if (nameNeeded[i].SteamId == idInJson)
+                    {
                         nameNeeded[i].PersonName = token.Value<string>("personaname");
+                        break; 
+                    }
+
                 }
             }
 
